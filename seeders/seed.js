@@ -1,9 +1,9 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+let db = require('../models');
 
-mongoose.connect("mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout-app', {
+  useFindAndModify: true,
+  useNewUrlParser: true
 });
 
 let workoutSeed = [
@@ -126,7 +126,7 @@ let workoutSeed = [
     day: new Date().setDate(new Date().getDate()-1),
     exercises: [
       {
-        type: "resistance",
+        type: "cardio",
         name: "Bench",
         duration: 30,
         distance: 2
